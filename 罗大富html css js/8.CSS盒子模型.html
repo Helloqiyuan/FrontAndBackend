@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS盒子模型</title>
+        <style>
+            /* 复合属性:font border border-x */
+            .demo {
+                background-color: aqua;
+                display: inline-block;
+                border: 5px solid yellowgreen;
+                font-size: 40px;
+                margin: 40px 40px 40px 40px;
+            }
+            .border-demo {
+                background-color: yellow;
+                width: 300px;
+                height: 200px;
+                /* 设置边框:border */
+                /* 顺序上右下左 没有就找对面的属性 */
+                border-style: solid dashed dotted double;
+                /*              ^      ^      ^      ^ 
+                                |      |      |      | 
+                                实线   虚线   点线   双线 */
+                /* 边框宽度 */
+                border-width: 20px 15px 10px 5px;
+                border-color: brown;
+                /* 文本与边框的距离 */
+                padding: 100px;
+                /* 组件之间的距离 */
+                margin: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="demo">GenShin Start</div>
+        <div class="border-demo">这是一个边框示例</div>
+        <h1>123</h1>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flex 弹性布局</title>
+        <style>
+            html{
+                font-style: 10px;
+            }
+            .container{
+                display: flex;
+                height: 50rem;
+                background-color: aqua;
+                /*
+                决定主轴的方向(即项目的排列方向)
+                项目:就是子元素
+                默认row 
+                row-reverse
+                column
+                cloumn-reverse
+                */
+                flex-direction: row;
+                /* 
+                默认情况下,项目都排列在一条轴线上,如果一条轴线的换行方式:
+                默认nowrap:不换行
+                wrap：换行
+                wrap-reverse:从下到上(对于flex-direction=row来说) */
+                flex-wrap: wrap;
+                /* 
+                定义了项目在主轴上的对齐方式
+                flex-start默认
+                flex-end
+                center
+                space-between
+                space-around
+                space-evenly */
+                justify-content: flex-start;
+                /* 
+                定义项目在交叉轴上如何对齐
+                交叉轴:纵轴
+                flex-start
+                flex-end
+                center
+                baseline
+                stretch默认:如果项目未设置高度或设为auto,项目将占满整个容器的高度
+                 */
+                align-items: stretch;
+                /* 
+                定义了多根轴线的对齐方式.如果项目只有一根轴线,该属性不起作用
+                多根轴线:就是项目行数>1
+                flex-start
+                flex-end
+                center
+                space-between
+                space-around
+                stretch默认值
+                 */
+                align-content:center;
+            }
+            .item{
+                width: 20rem;
+                /* height: 10rem; */
+                font-size: 9rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item" style="background-color: yellowgreen;">1</div>
+            <div class="item" style="background-color: rebeccapurple;">2</div>
+            <div class="item" style="background-color: gray;">3</div>
+            <div class="item" style="background-color: gold;">4</div>
+            <div class="item" style="background-color: brown;">5</div>
+            <div class="item" style="background-color: #4aa;">6</div>
+        </div>
+    </body>
+</html>

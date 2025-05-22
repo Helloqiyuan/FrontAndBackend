@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>定位</title>
+        <style>
+            /* 
+                相对定位,不脱离文档流
+                它只是看起来偏离了位置，实际上还是在原位
+             */
+            .box1 {
+                background-color: aqua;
+                height: 350px;
+            }
+            .box-normal {
+                background-color: purple;
+                width: 100px;
+                height: 100px;
+            }
+            .box-relative {
+                background-color: pink;
+                width: 100px;
+                height: 100px;
+                position: relative;
+                left: 110px;
+                top: 40px;
+            }
+            /* 
+            绝对定位,脱离文档流
+             */
+            .box2 {
+                background-color: yellow;
+                height: 350px;
+                margin-bottom: 300px;
+            }
+            .box-absolute {
+                width: 100px;
+                height: 100px;
+                background-color: yellowgreen;
+                position: absolute;
+                left: 10px;
+            }
+            .float {
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+                float: left;
+            }
+            /* 固定定位,脱离文档流 */
+            .box-fixed {
+                width: 100px;
+                height: 100px;
+                background-color: brown;
+                position: fixed;
+                right: 0px;
+                bottom: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>相对定位</h1>
+        <div class="box1">
+            <div class="box-normal"></div>
+            <div class="box-relative"></div>
+            <div class="box-normal"></div>
+        </div>
+        <h1>绝对定位</h1>
+        <div class="box2">
+            <div class="box-normal">1</div>
+            <div class="box-normal">2</div>
+            <div class="box-absolute">3</div>
+            <div class="box-normal">4</div>
+        </div>
+        <h1>固定定位</h1>
+        <div class="box-fixed"></div>
+    </body>
+</html>

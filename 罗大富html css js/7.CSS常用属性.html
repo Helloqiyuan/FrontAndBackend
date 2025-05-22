@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS常用属性</title>
+        <style>
+            .block {
+                background-color: aqua;
+                width: 300px;
+                height: 100px;
+            }
+            .inline{
+                background-color: brown;
+            }
+            .inline-block {
+                width: 300px;
+            }
+            .div-inline {
+                display: inline;
+                background-color: orange;
+                /* width: 1000px; */
+            }
+        </style>
+    </head>
+    <body>
+        <!-- style=对顺序有要求 -->
+        <h1 style="font:bolder 50px 'KaiTi';">这是一个font复合</h1>
+
+        <p style="line-height: 40px;">这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本</p>
+
+        <!-- <div class="blk">
+            <span>这是段落标签</span>
+            <span>第二个段落标签</span>
+            <img src="img.png" alt="无法显示图片。。。">
+        </div> -->
+        <div class="block">这是一个块级元素</div>
+        <span class="inline">这是一个行内元素</span>
+        <img src="img.png" alt="" class="inline-block">
+        <img src="img.png" alt="" class="inline-block">
+        <img src="img.png" alt="" class="inline-block">
+        <p>display</p>
+        <div class="div-inline">这是一个转换成行内元素的div标签</div>
+    </body>
+</html>

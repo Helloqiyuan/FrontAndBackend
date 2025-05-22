@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS基本语法和函数</title>
+    </head>
+    <body>
+        <script>
+            // var声明的变量是具有函数作用域
+            var x=1;
+            // let声明的变量是具有块级作用域,更安全更灵活
+            let y=2;
+            const PI = 3.14;
+            // console.log(x+y+PI);
+            let empty_value = null;
+            // console.log(empty_value);
+            // console.log("123");
+            // console.log('123');
+            
+            // for(let i = 0;i < 10;i++){
+            //     console.log(i);
+            // }
+            function hello(){
+                console.log("Hello World!");
+            }
+
+            hello();
+
+            function hello_with_return(params){
+                return "Hello World -返回值" + params;
+            }
+
+            console.log(hello_with_return("JavaScript"));
+            
+        </script>
+        <script>
+            console.log(PI);
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no  ">
+        <title>表格的增删查改</title>
+
+        <style>
+            #h1-01 {
+                    background-color: red;
+                    /* 居中显示 */
+                    text-align: center;
+                    
+                }
+            #table1{
+                margin-top: 25px;
+                width: 100%;
+                border-collapse: collapse;
+            }
+            #table1 td{
+                padding:15px;
+                border: 1px solid gray;
+                text-align: center;
+                /* background-color: gray; */
+            }
+            #table1 th{
+                padding:15px;
+                /* background-color: gray; */
+                border: 1px solid gray;
+            }
+            /* td button{
+                margin-left: 5px;
+            } */
+        </style>
+        <script src="js/table16.js" defer></script>
+    </head>
+    <body>
+        <h1 id="h1-01">表格的增删查改</h1>
+        <button onclick="addRow()">添加数据</button>
+        <button onclick="findRow()">查询数据</button>
+        <table id="table1">
+            <tr id="head">
+                <th>姓名</th>
+                <th>联系方式</th>
+                <th>操作</th>
+            </tr>
+        </table>
+        
+    </body>
+</html>

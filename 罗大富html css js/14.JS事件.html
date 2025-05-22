@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS事件</title>
+    </head>
+    <body>
+        <button onclick="fun()">这是一个点击事件按钮</button>
+        <input type="text" onfocus="focusss()" onblur="blurss()">
+        <script>
+            function fun(){
+                alert("点击事件触发了");
+            }
+            function focusss(){
+                console.log("获取焦点");
+                
+            }
+            function blurss(){
+                console.log("失去焦点");
+                
+            }
+            console.log("1");
+            
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS DOM</title>
+    </head>
+    <body>
+         <div id="box1">这是一个ID选择器标签</div>
+         <div class="box2">这是一个类选择器标签</div>
+         <div>普通的div标签</div>
+         <button>按钮</button>
+         <script>
+            var element_id = document.getElementById("box1");
+            console.log(element_id);
+            var element_class = document.getElementsByClassName("box2")[0];
+            console.log(element_class);
+            var element_tag = document.getElementsByTagName("div")[2];
+            console.log(element_tag);
+
+            //右边的值可以被解析成对应的标签
+            element_id.innerHTML = "<a href=\"#\">跳转链接</a>";
+            //右边的值只是一个字符串
+            element_class.innerText = '<a href="#">跳转链接</a>';
+            //还可以改标签的属性值
+            element_id.style.fontSize = "30px";
+            element_class.style.color = "red"; 
+
+            // DOM 属性绑定事件
+            var button_element = document.getElementsByTagName("button")[0];
+            console.log(button_element);
+            
+
+            // button_element.onclick = click_event;
+            function click_event(){
+                alert("按键反馈");
+            }
+            button_element.addEventListener("click",click_event);
+         </script>
+    </body>
+</html>

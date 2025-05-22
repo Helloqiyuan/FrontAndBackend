@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>主页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: url("https://picsum.photos/1920/1080?blur=5") no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Segoe UI", sans-serif;
+      color: white;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .time {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .search {
+      display: flex;
+      width: 80%;
+      max-width: 600px;
+      margin: 1rem 0;
+      animation: fadeIn 2s ease;
+    }
+
+    .search input {
+      flex: 1;
+      padding: 0.8rem 1rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      outline: none;
+    }
+
+    .search button {
+      padding: 0.8rem 1.2rem;
+      font-size: 1.2rem;
+      border: none;
+      background: rgba(255,255,255,0.8);
+      color: #333;
+      cursor: pointer;
+      border-radius: 0 8px 8px 0;
+      transition: background 0.3s;
+    }
+
+    .search button:hover {
+      background: white;
+    }
+
+    .links {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      animation: fadeIn 2.5s ease;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      padding: 1rem 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="time" id="time">00:00:00</div>
+  
+  <form class="search" onsubmit="return search(event)">
+    <input type="text" id="query" placeholder="搜索你想要的..." />
+    <button type="submit">搜索</button>
+  </form>
+
+  <div class="links">
+    <div class="card"><a href="https://www.baidu.com" target="_blank">百度</a></div>
+    <div class="card"><a href="https://www.google.com" target="_blank">Google</a></div>
+    <div class="card"><a href="https://github.com" target="_blank">GitHub</a></div>
+    <div class="card"><a href="https://bilibili.com" target="_blank">Bilibili</a></div>
+    <div class="card"><a href="https://zhihu.com" target="_blank">知乎</a></div>
+  </div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2, "0");
+      const m = now.getMinutes().toString().padStart(2, "0");
+      const s = now.getSeconds().toString().padStart(2, "0");
+      document.getElementById("time").textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    function search(e) {
+      e.preventDefault();
+      const query = document.getElementById("query").value.trim();
+      if (query) {
+        // 更换搜索引擎地址即可
+        window.open(`https://www.baidu.com/s?wd=${encodeURIComponent(query)}`, "_blank");
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>
