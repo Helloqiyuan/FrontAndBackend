@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子模型</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            /* 在不设置box-sizing的情况下
+             设置的是内容展示区的宽度 高度 */
+
+
+            background-color: red;
+            padding: 5px;
+            border: 16px solid blue;
+            margin: auto;
+            box-sizing: border-box;
+            /* border-box:设置包括边框和边框以内的元素 整体的宽是width 高是heigth */
+            /* content-box:width表示内容宽度 height表示内容高度 */
+            /* 换句话说这个box-sizing就是设置width和height作用的对象
+             border-box设置成了边框外侧 content-box设置成了内容的边缘 */
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+         A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A
+    </div>
+</body>
+</html>

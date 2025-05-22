@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T1ias智能学习辅助系统</title>
+    <style>
+        /* 重置默认边距 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* 顶部导航栏样式 */
+        .top-navbar {
+            background-color: #808080; /* 灰色背景 */
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .title {
+            font-weight: bold; /* 加粗 */
+            font-size: 20px;
+            color: #fff; /* 白色文字 */
+        }
+        
+        .logout-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        .logout-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* 搜索表单区域样式 */
+        .search-form {
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+
+        }
+        
+        .form-container {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            justify-content: space-around; 
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 300px;
+        }
+        
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .form-group input, 
+        .form-group select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+        
+        .btn-secondary {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #d32f2f;
+        }
+        
+        /* 表格展示区域样式 */
+        .table-container {
+            margin: 20px auto;
+            padding: 0 20px;
+            max-width: 1200px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .data-table thead {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .data-table th, 
+        .data-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .data-table th {
+            font-weight: bold;
+        }
+        
+        .data-table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .data-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .avatar-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .btn-edit, .btn-delete {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        
+        .btn-edit {
+            background-color: #2196F3;
+            color: white;
+        }
+        
+        .btn-edit:hover {
+            background-color: #0b7dda;
+        }
+        
+        .btn-delete {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .btn-delete:hover {
+            background-color: #d32f2f;
+        }
+         /* 新增页脚样式 */
+        .footer {
+            background-color: #808080; /* 灰色背景 */
+            color: white; /* 白色文字 */
+            padding: 20px 0;
+            text-align: center; /* 居中对齐 */
+            margin-top: 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;/* 最大宽度 */
+            margin: 0 auto;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        #container {
+            width: 80%;
+            margin: auto
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- 顶部导航栏 -->
+        <header class="top-navbar">
+            <h1 class="title">T1ias智能学习辅助系统</h1>
+            <a href="#" class="logout-link">退出登录</a>
+        </header>
+        <!-- 搜索表单区域 -->
+        <section class="search-form">
+            <form id="searchForm">
+                <div class="form-container">
+                    <!-- 姓名输入框 -->
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" placeholder="请输入姓名">
+                    </div>
+                    
+                    <!-- 性别下拉选择 -->
+                    <div class="form-group">
+                        <label for="gender">性别</label>
+                        <select id="gender" name="gender">
+                            <option value="">请选择性别</option>
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 职位下拉选择 -->
+                    <div class="form-group">
+                        <label for="position">职位</label>
+                        <select id="position" name="position">
+                            <option value="">请选择职位</option>
+                            <option value="head-teacher">班主任</option>
+                            <option value="lecturer">讲师</option>
+                            <option value="student-affairs">学工主管</option>
+                            <option value="teaching-research">教研主管</option>
+                            <option value="consultant">咨询师</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 操作按钮 -->
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">查询</button>
+                        <button type="reset" class="btn btn-secondary">清空</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        
+        <!-- 表格展示区域 -->
+        <section class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>头像</th>
+                        <th>职位</th>
+                        <th>入职日期</th>
+                        <th>最后操作时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 令狐冲 -->
+                    <tr>
+                        <td>令狐冲</td>
+                        <td>男</td>
+                        <td><img src="https://placeholder.pics/svg/40x40/DEDEDE/555555/令狐冲" alt="令狐冲头像" class="avatar-img"></td>
+                        <td>讲师</td>
+                        <td>2018-05-15</td>
+                        <td>2023-06-10 14:30</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">编辑</button>
+                                <button class="btn-delete">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 任盈盈 -->
+                    <tr>
+                        <td>任盈盈</td>
+                        <td>女</td>
+                        <td><img src="https://placeholder.pics/svg/40x40/DEDEDE/555555/任盈盈" alt="任盈盈头像" class="avatar-img"></td>
+                        <td>教研主管</td>
+                        <td>2019-03-22</td>
+                        <td>2023-06-12 09:45</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">编辑</button>
+                                <button class="btn-delete">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 岳不群 -->
+                    <tr>
+                        <td>岳不群</td>
+                        <td>男</td>
+                        <td><img src="https://placeholder.pics/svg/40x40/DEDEDE/555555/岳不群" alt="岳不群头像" class="avatar-img"></td>
+                        <td>学工主管</td>
+                        <td>2017-11-08</td>
+                        <td>2023-06-11 16:20</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">编辑</button>
+                                <button class="btn-delete">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 林平之 -->
+                    <tr>
+                        <td>林平之</td>
+                        <td>男</td>
+                        <td><img src="https://placeholder.pics/svg/40x40/DEDEDE/555555/林平之" alt="林平之头像" class="avatar-img"></td>
+                        <td>班主任</td>
+                        <td>2020-08-14</td>
+                        <td>2023-06-09 11:15</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">编辑</button>
+                                <button class="btn-delete">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 仪琳 -->
+                    <tr>
+                        <td>仪琳</td>
+                        <td>女</td>
+                        <td><img src="https://placeholder.pics/svg/40x40/DEDEDE/555555/仪琳" alt="仪琳头像" class="avatar-img"></td>
+                        <td>咨询师</td>
+                        <td>2021-04-30</td>
+                        <td>2023-06-08 13:40</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">编辑</button>
+                                <button class="btn-delete">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 东方不败 -->
+                    <tr>
+                        <td>东方不败</td>
+                        <td>男</td>
+                        <td><img src="https://placeholder.pics/svg/40x40/DEDEDE/555555/东方不败" alt="东方不败头像" class="avatar-img"></td>
+                        <td>教研主管</td>
+                        <td>2016-09-25</td>
+                        <td>2023-06-13 10:05</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">编辑</button>
+                                <button class="btn-delete">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 宁中则 -->
+                    <tr>
+                        <td>宁中则</td>
+                        <td>女</td>
+                        <td><img src="https://placeholder.pics/svg/40x40/DEDEDE/555555/宁中则" alt="宁中则头像" class="avatar-img"></td>
+                        <td>学工主管</td>
+                        <td>2018-07-19</td>
+                        <td>2023-06-12 15:30</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">编辑</button>
+                                <button class="btn-delete">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 田伯光 -->
+                    <tr>
+                        <td>田伯光</td>
+                        <td>男</td>
+                        <td><img src="https://placeholder.pics/svg/40x40/DEDEDE/555555/田伯光" alt="田伯光头像" class="avatar-img"></td>
+                        <td>讲师</td>
+                        <td>2019-11-05</td>
+                        <td>2023-06-11 09:20</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">编辑</button>
+                                <button class="btn-delete">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 蓝凤凰 -->
+                    <tr>
+                        <td>蓝凤凰</td>
+                        <td>女</td>
+                        <td><img src="https://placeholder.pics/svg/40x40/DEDEDE/555555/蓝凤凰" alt="蓝凤凰头像" class="avatar-img"></td>
+                        <td>咨询师</td>
+                        <td>2020-02-28</td>
+                        <td>2023-06-10 16:45</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">编辑</button>
+                                <button class="btn-delete">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 风清扬 -->
+                    <tr>
+        <td>风清扬</td>
+        <td>男</td>
+        <td><img src="https://placeholder.pics/svg/40x40/DEDEDE/555555/风清扬" alt="风清扬头像" class="avatar-img"></td>
+        <td>教研主管</td>
+        <td>2015-12-10</td>
+        <td>2023-06-14 08:10</td>
+        <td>
+            <div class="action-buttons">
+                <button class="btn-edit">编辑</button>
+                <button class="btn-delete">删除</button>
+            </div>
+        </td>
+    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- 页脚版权区域 -->
+        <footer class="footer">
+            <div class="footer-content">
+            <p>江苏传智播客教育科技股份有限公司</p>
+            <p>版权所有 Copyright 2006-2024 All Rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+</html>
