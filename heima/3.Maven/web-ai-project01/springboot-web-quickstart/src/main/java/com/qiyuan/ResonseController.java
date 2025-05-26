@@ -1,7 +1,7 @@
 package com.qiyuan;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,4 +20,11 @@ public class ResonseController {
         response.getWriter().write("<h1>Hello World!<h>");
     }
 
+    @RequestMapping("/response2")
+    public ResponseEntity<String> response2(){
+        return ResponseEntity
+                .status(200) //状态码
+                .header("name","javaweb-ai") //响应头
+                .body("<h1>hello response2</h1>"); //响应体
+    }
 }
