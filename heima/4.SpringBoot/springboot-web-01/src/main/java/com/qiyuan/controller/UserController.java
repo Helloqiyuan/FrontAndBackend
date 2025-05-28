@@ -3,6 +3,9 @@ package com.qiyuan.controller;
 import com.qiyuan.pojo.User;
 import com.qiyuan.service.UserService;
 import com.qiyuan.service.impl.UserServiceImpl;
+import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +22,19 @@ import java.util.List;
     作用:将Controller(下面的各个方法)返回值直接作为响应体的数据直接响应;返回值是对象/集合->json->响应
  */
 public class UserController {
-    private UserService userService = new UserServiceImpl();
+    //如果有多个bean 则可以用
+    /**
+     * 方法一
+     * @Resource(name = "userServiceImpl")
+     *
+     * 方法二
+     * 2.@Autowired
+     *@Qualifier("userServiceImpl")
+     *
+     */
+
+    @Autowired
+    private UserService userService;
 //    @RequestMapping("/list")
 //    public List<User> list(){
 //        //1.加载并读取user.txt文件，获取用户数据

@@ -4,13 +4,21 @@ import com.qiyuan.dao.UserDao;
 import com.qiyuan.dao.impl.UserDaoImpl;
 import com.qiyuan.pojo.User;
 import com.qiyuan.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Service
+//@Component
 public class UserServiceImpl implements UserService {
-    private UserDao userDao = new UserDaoImpl();
+    @Autowired
+    private UserDao userDao;
     @Override
     public List<User> findAll() {
         List<String> lines = userDao.findAll();

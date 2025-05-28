@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.0</version>
+        <version>3.4.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.qiyuan</groupId>
-    <artifactId>springboot-web-01</artifactId>
+    <artifactId>springboot-mybatis-quickstart</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-web-01</name>
-    <description>springboot-web-01</description>
+    <name>springboot-mybatis-quickstart</name>
+    <description>springboot-mybatis-quickstart</description>
     <url/>
     <licenses>
         <license/>
@@ -30,34 +30,40 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
-        <!--  spring web      -->
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>3.0.4</version>
         </dependency>
-        <!--    lombok:自动加getter setter 构造方法    -->
+
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--  spring test      -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--   hutool:有关IO的工具类     -->
         <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.8.27</version>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter-test</artifactId>
+            <version>3.0.4</version>
+            <scope>test</scope>
         </dependency>
-        <!--   spring actuator:看bean类的     -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+<!--        引入druid-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba</groupId>-->
+<!--            <artifactId>druid-spring-boot-starter</artifactId>-->
+<!--            <version>1.2.16</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
